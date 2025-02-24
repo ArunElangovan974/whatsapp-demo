@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat with {{ receiver.username }}</title>
+</head>
+<body>
+    <h2>Chat with {{ receiver.username }}</h2>
+
+    <div id="chat-box">
+        {% for message in messages %}
+            <p><strong>{{ message.sender.username }}:</strong> {{ message.text }}</p>
+        {% endfor %}
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="content" placeholder="Type a message..." required>
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
+
